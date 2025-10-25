@@ -35,6 +35,7 @@ function draw(e) {
 }
 
 page.addEventListener("mousedown", e => {
+    e.preventDefault();
     isMouseDown = true;
     draw(e);
 })
