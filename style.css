@@ -12,14 +12,14 @@ body {
     align-items: center;
     gap: 50px;
     background-color: #F5F5DC;
-    height: 100vh;
+    height: 100dvh;
     padding: 20px 0;
 }
 
 .grid {
-    width: 48vw;
+    height: 90vh;
     border: 3px solid black;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     background-color: white;
 }
 
@@ -30,7 +30,7 @@ body {
 .grid-square {
     flex: 1;
     margin: 0;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
 }
 
 .button {
