@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+
+.row-container {
+    display:flex
+}
+
+.grid-square {
+    flex: 1;
+    border: 2px solid gray;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+}
