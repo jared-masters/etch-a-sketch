@@ -1,8 +1,10 @@
 const grid = document.querySelector(".grid");
 const resizeButton = document.querySelector(".resize-button");
 const resetButton = document.querySelector(".reset-button");
+const UIContainer = document.querySelector(".ui-container");
 
 let size = 16;
+let isMouseDown = false;
 
 function createGrid(size) {
     for (let i = 0; i < size; ++i) {
@@ -21,14 +23,24 @@ function clearGrid() {
     Array.from(grid.children).forEach(row => row.parentNode.removeChild(row));
 }
 
+function draw(e) {
+    if (e.target.style.backgroundColor == "" && isMouseDown) {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+}
+
+grid.addEventListener("mousedown", e => {
+    isMouseDown = true;
+    draw(e);
+})
+grid.addEventListener("mouseup", () => isMouseDown = false)
+
 grid.addEventListener("mouseover", e => {
     if (e.target.classList.contains("grid-square")) {
-        if (e.target.style.backgroundColor == "") {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        }
+        draw(e);
     }
 })
 
@@ -43,6 +55,18 @@ resizeButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
     clearGrid();
     createGrid(size);
+})
+
+UIContainer.addEventListener("mouseover", e => {
+    if (e.target.classList.contains("button")) {
+        e.target.style.scale = 1.1;
+    }
+})
+
+UIContainer.addEventListener("mouseout", e => {
+    if (e.target.classList.contains("button")) {
+        e.target.style.scale = 1.0;
+    }
 })
 
 createGrid(size);
