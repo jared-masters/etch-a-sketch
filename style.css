@@ -2,13 +2,30 @@ body {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    margin-bottom: 50px;
+    width: 50%;
+    border: 3px solid black;
+    aspect-ratio: 1 / 1;
+}
+
 .row-container {
     display:flex
 }
 
 .grid-square {
     flex: 1;
-    border: 2px solid gray;
     margin: 0;
     aspect-ratio: 1 / 1;
+}
+
+.resize-button {
+    padding: 4px;
+    margin: 20px;
 }
