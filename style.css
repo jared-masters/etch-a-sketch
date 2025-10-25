@@ -4,15 +4,18 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
+    background-color: #F5F5DC;
 }
 
 .grid {
-    margin-bottom: 50px;
+    margin: 20px 0;
     width: 50%;
     border: 3px solid black;
     aspect-ratio: 1 / 1;
+    background-color: white;
 }
 
 .row-container {
@@ -25,7 +28,18 @@ body {
     aspect-ratio: 1 / 1;
 }
 
-.resize-button {
-    padding: 4px;
+.button {
+    padding: 8px;
     margin: 20px;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+.ui-container {
+    background-color: rgb(255, 175, 146);
+    border: 3px solid black;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

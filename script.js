@@ -1,5 +1,8 @@
 const grid = document.querySelector(".grid");
 const resizeButton = document.querySelector(".resize-button");
+const resetButton = document.querySelector(".reset-button");
+
+let size = 16;
 
 function createGrid(size) {
     for (let i = 0; i < size; ++i) {
@@ -14,6 +17,10 @@ function createGrid(size) {
     }
 }
 
+function clearGrid() {
+    Array.from(grid.children).forEach(row => row.parentNode.removeChild(row));
+}
+
 grid.addEventListener("mouseover", e => {
     if (e.target.classList.contains("grid-square")) {
         if (e.target.style.backgroundColor == "") {
@@ -26,11 +33,16 @@ grid.addEventListener("mouseover", e => {
 })
 
 resizeButton.addEventListener("click", () => {
-    const size = prompt("How many squares per side?");
+    size = prompt("How many squares per side?");
     if (size !== null && size.length > 0 && !isNaN(size)) {
-        Array.from(grid.children).forEach(row => row.parentNode.removeChild(row));
+        clearGrid();
         createGrid(size);
     }
 })
 
-createGrid(16);
+resetButton.addEventListener("click", () => {
+    clearGrid();
+    createGrid(size);
+})
+
+createGrid(size);
