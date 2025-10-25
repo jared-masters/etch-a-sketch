@@ -1,3 +1,4 @@
+const page = document.querySelector("body");
 const grid = document.querySelector(".grid");
 const resizeButton = document.querySelector(".resize-button");
 const resetButton = document.querySelector(".reset-button");
@@ -24,7 +25,8 @@ function clearGrid() {
 }
 
 function draw(e) {
-    if (e.target.style.backgroundColor == "" && isMouseDown) {
+    if (e.target.classList.contains("grid-square") &&
+        e.target.style.backgroundColor == "" && isMouseDown) {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
@@ -32,17 +34,13 @@ function draw(e) {
     }
 }
 
-grid.addEventListener("mousedown", e => {
+page.addEventListener("mousedown", e => {
     isMouseDown = true;
     draw(e);
 })
-grid.addEventListener("mouseup", () => isMouseDown = false)
+page.addEventListener("mouseup", () => isMouseDown = false)
 
-grid.addEventListener("mouseover", e => {
-    if (e.target.classList.contains("grid-square")) {
-        draw(e);
-    }
-})
+grid.addEventListener("mouseover", e => draw(e))
 
 resizeButton.addEventListener("click", () => {
     size = prompt("How many squares per side?");
