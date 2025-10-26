@@ -1,9 +1,9 @@
 const page = document.querySelector("body");
 const grid = document.querySelector(".grid");
+
 const resizeButton = document.querySelector(".resize-button");
 const resetButton = document.querySelector(".reset-button");
 const buttons = document.querySelectorAll(".button");
-const UIContainer = document.querySelector(".container-left");
 
 let size = 16;
 let isMouseDown = false;
