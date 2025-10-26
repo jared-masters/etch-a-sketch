@@ -2,7 +2,8 @@ const page = document.querySelector("body");
 const grid = document.querySelector(".grid");
 const resizeButton = document.querySelector(".resize-button");
 const resetButton = document.querySelector(".reset-button");
-const UIContainer = document.querySelector(".ui-container");
+const buttons = document.querySelectorAll(".button");
+const UIContainer = document.querySelector(".container-left");
 
 let size = 16;
 let isMouseDown = false;
@@ -44,10 +45,13 @@ page.addEventListener("mouseup", () => isMouseDown = false)
 grid.addEventListener("mouseover", e => draw(e))
 
 resizeButton.addEventListener("click", () => {
+    let temp = size;
     size = prompt("How many squares per side?");
     if (size !== null && size.length > 0 && !isNaN(size)) {
         clearGrid();
         createGrid(size);
+    } else {
+        size = temp;
     }
 })
 
@@ -56,16 +60,18 @@ resetButton.addEventListener("click", () => {
     createGrid(size);
 })
 
-UIContainer.addEventListener("mouseover", e => {
-    if (e.target.classList.contains("button")) {
-        e.target.style.scale = 1.1;
-    }
-})
+buttons.forEach(button => {
+    button.addEventListener("mouseenter", e => {
+        if (e.target.classList.contains("button")) {
+            e.target.style.scale = 1.1;
+        }
+    })
 
-UIContainer.addEventListener("mouseout", e => {
-    if (e.target.classList.contains("button")) {
-        e.target.style.scale = 1.0;
-    }
+    button.addEventListener("mouseleave", e => {
+        if (e.target.classList.contains("button")) {
+            e.target.style.scale = 1.0;
+        }
+    })
 })
 
 createGrid(size);

@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -8,10 +10,7 @@ body {
 
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 50px;
     background-color: #F5F5DC;
     min-height: 100dvh;
     padding: 20px;
@@ -37,19 +36,31 @@ body {
 
 .button {
     padding: 8px;
-    margin: 0px;
+    margin: 0 16px;
     border: 2px solid black;
     font-weight: bold;
+    border-radius: 8px;
 }
 
-.ui-container {
-    background-color: rgb(255, 175, 146);
-    border: 3px solid black;
-    width: 250px;
+.reset-button {
+    height: 50px;
+}
+
+.reset-button .image {
+    width: 30px;
+    height: 30px;
+}
+
+.container-side {
+    flex: 1 1 0;
+    max-height: 95vh;
+    align-self: stretch;
+}
+
+.container-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
     padding: 16px 0;
     gap: 16px;
 }
